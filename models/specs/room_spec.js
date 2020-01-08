@@ -14,7 +14,7 @@ describe('Room', function() {
     assert.strictEqual( actual, 10000)
   });
   it('should start not painted', function() {
-    const actual = room.paintCoverage;
-    assert.strictEqual( actual, 0)
+    const actual = room.isPainted;
+    assert.strictEqual( actual, false)
   });
 });

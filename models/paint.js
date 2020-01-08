@@ -5,8 +5,7 @@ const PaintCan = function ( litres ) {
 PaintCan.prototype.checkIfEmpty = function() {
   if (this.litres === 0) {
     return true
-  }
-  else {
+  } else {
     return false
   }
 };
