@@ -9,6 +9,8 @@ describe('Decorator', function() {
 
 let decorator;
 let paintCan;
+let paintCan2;
+let paintCan3;
 let room;
 
   beforeEach( function() {
