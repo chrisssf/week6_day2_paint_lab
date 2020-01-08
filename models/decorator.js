@@ -24,7 +24,17 @@ Decorator.prototype.canPaintRoom = function (room) {
 
 Decorator.prototype.paintRoom = function (room) {
   if (this.canPaintRoom(room)) {
-    room.isPainted = true
+    room.isPainted = true;
+    let usedPaint = 0;
+    let cansUsed = 0;
+    for (let paintCan of this.paintStock){
+      if (usedPaint < room.area){
+        usedPaint += paintCan.litres
+        cansUsed++
+      }
+    }
+    this.paintStock = this.paintStock.splice(cansUsed);
+    return cansUsed;
   } else {
     return "Not enough paint for this room"
   }

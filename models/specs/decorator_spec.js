@@ -15,6 +15,7 @@ let room;
     decorator = new Decorator();
     paintCan = new PaintCan(10);
     paintCan2 = new PaintCan(5);
+    paintCan3 = new PaintCan(2);
     room = new Room(15);
 
   });
@@ -55,5 +56,28 @@ let room;
     decorator.addPaintCan(paintCan);
     const actual = decorator.paintRoom(room);
     assert.strictEqual(actual, "Not enough paint for this room");
+  })
+  it('should return the number of cans used if room has been painted', function(){
+    decorator.addPaintCan(paintCan3);
+    decorator.addPaintCan(paintCan2);
+    decorator.addPaintCan(paintCan3);
+    decorator.addPaintCan(paintCan3);
+    decorator.addPaintCan(paintCan);
+    decorator.addPaintCan(paintCan2);
+    decorator.addPaintCan(paintCan3);
+    const actual = decorator.paintRoom(room);
+    assert.strictEqual(actual, 5)
+  });
+  it('should delete cans after use', function(){
+    decorator.addPaintCan(paintCan3);
+    decorator.addPaintCan(paintCan2);
+    decorator.addPaintCan(paintCan3);
+    decorator.addPaintCan(paintCan3);
+    decorator.addPaintCan(paintCan);
+    decorator.addPaintCan(paintCan2);
+    decorator.addPaintCan(paintCan3);
+    decorator.paintRoom(room);
+    const actual = decorator.paintStock;
+    assert.deepStrictEqual(actual, [paintCan2, paintCan3])
   })
 });
